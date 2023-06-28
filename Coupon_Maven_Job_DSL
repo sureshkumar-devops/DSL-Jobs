@@ -24,6 +24,6 @@ job('Mavem-DSL-JOB') {
     publishers {
         archiveArtifacts('target/*.jar')
         archiveJunit('target/surefire-reports/*.xml')
-        mailer('suresh.ak47@gmail.com', true, true)
+     
     }
 }
