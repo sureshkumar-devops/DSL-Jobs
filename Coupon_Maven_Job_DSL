@@ -17,10 +17,10 @@ job('Mavem-DSL-JOB') {
         }
         shell('''
             echo ************RUNNING THE JAR************************
-            java -jar /var/lib/jenkins/workspace/Mavem-DSL-JOB/target/couponcode-0.0.1-SNAPSHOT.jar
+            java -jar /var/lib/jenkins/workspace/Mavem-DSL-JOB/target/couponcode-0.0.1-SNAPSHOT.war
             ''')
     } 
     publishers {
-        archiveArtifacts('**/*.jar')
+        archiveArtifacts('**/*.war')
     }
 }
