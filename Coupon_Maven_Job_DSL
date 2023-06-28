@@ -3,7 +3,7 @@ job('Mavem-DSL-JOB') {
     description('Maven DSL Project')
 
     scm {
-        git('https://github.com/sureshkumar-devops/couponcode.git', 'master', {node -> node / 'extensions' << '' })
+        git('https://github.com/sureshkumar-devops/couponcode.git', 'master')
     }
 
     steps {
@@ -17,10 +17,10 @@ job('Mavem-DSL-JOB') {
         }
         shell('''
             echo ************RUNNING THE JAR************************
-            java -war /var/lib/jenkins/workspace/Mavem-DSL-JOB/target/couponcode-0.0.1-SNAPSHOT.war
+            java -jar /var/lib/jenkins/workspace/Mavem-DSL-JOB/target/couponcode-0.0.1-SNAPSHOT.jar
             ''')
     } 
     publishers {
-        archiveArtifacts('**/*.war')
+        archiveArtifacts('**/*.jar')
     }
 }
