@@ -1,0 +1,29 @@
+job('Mavem-DSL-JOB') {
+
+    description('Maven DSL Project')
+
+    scm {
+        git('https://github.com/sureshkumar-devops/couponcode.git', 'master', {node -> node / 'extensions' << '' })
+    }
+
+    steps {
+        maven {
+            mavenInstallation('MAVEN_HOME')
+            goals('-B -DskipTests clean package')
+        }
+        maven {
+            mavenInstallation('MAVEN_HOME')
+            goals('test')
+        }
+        shell('''
+            echo ************RUNNING THE JAR************************
+            java -jar /var/lib/jenkins/workspace/Mavem-DSL-JOB/target/couponcodeDSL-1.0-SNAPSHOT.jar
+            ''')
+    }
+
+    publishers {
+        archiveArtifacts('target/*.jar')
+        archiveJunit('target/surefire-reports/*.xml')
+        mailer('suresh.ak47@gmail.com', true, true)
+    }
+}
