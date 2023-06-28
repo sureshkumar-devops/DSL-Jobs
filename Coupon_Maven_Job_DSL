@@ -22,7 +22,7 @@ job('Mavem-DSL-JOB') {
     }
 
     publishers {
-        archiveArtifacts('target/*.jar')
+        archiveArtifacts('**/*.jar')
         archiveJunit('target/surefire-reports/*.xml')
      
     }
