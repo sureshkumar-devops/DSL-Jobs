@@ -1,4 +1,4 @@
-job('Maven-Job-with-DSL-Script')
+job('Maven_Job_with_DSL_Script')
 {
    description('This Job is created by SeedJob - Maven')
    scm 
