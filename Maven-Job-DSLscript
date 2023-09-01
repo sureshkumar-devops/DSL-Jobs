@@ -1,0 +1,19 @@
+job('Maven-Job-DSLscript'){
+   description('This is Maven Project Job')
+   scm {
+       git('https://github.com/sureshkumar-devops/digitalads', 'master')
+       }
+   triggers { 
+       scm('* * * * *')
+      }
+   steps {
+     maven { 
+       mavenInstallation('maven')
+       goals('clean install')
+     }
+     maven { 
+       mavenInstallation('maven')
+       goals('test')
+     }
+   } 
+}
