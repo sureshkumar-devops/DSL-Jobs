@@ -28,6 +28,6 @@ job('Maven_Job_with_DSLScript')
    }
    publishers
    {
-      archiveArtifacts('/target/*.jar')      
+      archiveArtifacts('**/*.jar')      
    }
 }
