@@ -1,4 +1,33 @@
 job('Maven_Job_with_DSL_Script')
 {
-   description('This Job is created by SeedJob - Maven')   
+   description('This Job is created by SeedJob - Maven')
+   scm 
+   {
+       git('https://github.com/sureshkumar-devops/digitalads','master')
+   }
+   triggers
+   {
+       scm('* * * * *')
+   }
+   steps
+   {
+       maven
+       {
+         mavenInstallation('maven')
+         goals('clean package')
+       }
+       maven
+       {
+         mavenInstallation('maven')
+         goals('test')
+       }      
+      shell('''
+	 echo '*********** RUNNING THE JAR ********'		
+	  java -jar .jenkins/workspace/Maven-Job-with-DSL-Script/target/digitalads-1.0-SNAPSHOT.jar
+	'''')
+   }
+   publishers
+   {
+      archiveArtifacts('/target/*.jar')      
+   }
 }
