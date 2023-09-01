@@ -23,7 +23,7 @@ job('Maven_Job_with_DSLScript')
        }           
        shell('''
            echo *********** RUNNING THE JAR ********		
-	       java -jar .jenkins/workspace/Maven-Job-with-DSL-Script/target/digitalads-1.0-SNAPSHOT.jar
+	       java -jar .jenkins/workspace/Maven-Job-with-DSLScript/target/digitalads-1.0-SNAPSHOT.jar
            ''')
    }
    publishers
